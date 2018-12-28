@@ -6,7 +6,7 @@ import {CLOUD,
      SUN, 
      RAIN, 
      SNOW, 
-     WINDY} from './../constans/weathers';
+     WINDY} from '../../../constans/weathers';
 
 const stateToIconName = weatherState => {
     switch(weatherState){
@@ -39,7 +39,7 @@ const WeatherTemperature = ({temperature, weatherState}) => (
 );
 
 WeatherTemperature.propTypes = {
-    temperature: PropTypes.number,
-    weatherState: PropTypes.string,
+    temperature: PropTypes.number.isRequired,
+    weatherState: PropTypes.string.isRequired,
 }
 export default WeatherTemperature;
