@@ -7,34 +7,33 @@ import {CLOUD,
      RAIN, 
      SNOW, 
      WINDY} from '../../../constans/weathers';
+import './styles.css'
 
-const stateToIconName = weatherState => {
-    switch(weatherState){
-        case CLOUD:
-            return "cloud";
-        case CLOUDY:
-            return "cloudy";
-        case SUN:
-            return "day-sunny";
-        case RAIN:
-            return "rain";
-        case SNOW:
-            return "snow";
-        case WINDY:
-            return "windy";
-        default:
-            return "day-sunny"
-        
-    }
-};
+const icons = {
+    [CLOUD]: "cloud",
+    [CLOUDY]: "cloudy",    
+    [SUN]: "sun",    
+    [RAIN]: "rain",    
+    [SNOW]: "snow",    
+    [WINDY]: "windy",
+}
 
 const getWeatherIcon = weatherState => {
-    return (<WeatherIcons name={stateToIconName(weatherState)} size="2x" />);
+
+    const icon = icons[weatherState];
+    const sizeIcon = "4x";
+    
+    console.log("iconos", icons[weatherState])
+    if(icon)
+        return <WeatherIcons className="wicon" name={icon} size={sizeIcon} />
+    else
+        return <WeatherIcons className="wicon" name={"day-sunny"} size={sizeIcon} />;
 };
 const WeatherTemperature = ({temperature, weatherState}) => (
-    <div>
+    <div className="weatherTemperatureCont">
         {getWeatherIcon(weatherState)}
-        <span>{`${temperature}°C`}</span>
+        <span className="temperature">{`${temperature}`}</span>
+        <span className="temperatureType">{'°C'}</span>
     </div>
 );
 
